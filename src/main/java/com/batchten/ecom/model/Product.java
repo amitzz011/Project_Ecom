@@ -1,9 +1,6 @@
 package com.batchten.ecom.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,20 +15,34 @@ import java.util.Date;
 @AllArgsConstructor
 @Builder
 
-
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "brand")
     private String brand;
+
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "price")
     private BigDecimal price;
+
+    @Column(name = "category")
     private String category;
+
+    @Column(name = "release_date")
     private Date releaseDate;
+
+    @Column(name = "product_available")
     private boolean productAvailable;
+
+    @Column(name = "quantity")
     private int quantity;
-
-
 
 }
