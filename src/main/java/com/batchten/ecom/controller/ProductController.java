@@ -6,6 +6,7 @@ import com.batchten.ecom.model.Product;
 import com.batchten.ecom.repository.ProductRepository;
 import com.batchten.ecom.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,20 +19,17 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    private final ProductRepository productRepository;
-
-    public ProductController(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
-
-
-
     @PostMapping("/product")
-    public ResponseEntity<Product> createProduct( @RequestBody Product product){
-        Product savedProduct = productRepository.save(product);
+    public ResponseEntity<String> createProduct( @RequestBody Product product){
+         productService.createProduct(product);
 
-        URI location = URI.create("/api/product/" + savedProduct.getId());
-        return ResponseEntity.created(location).body(savedProduct);
+         //return new ResponseEntity<>(HttpStatus.OK, "Created Successfully");
+        return new ResponseEntity<>("Data Inserted Successfully", HttpStatus.OK);
+
+//        Product savedProduct = productRepository.save(product);
+
+//        URI location = URI.create("/api/product/" + savedProduct.getId());
+//        return ResponseEntity.created(location).body(savedProduct);
 
     }
 
@@ -42,6 +40,13 @@ public class ProductController {
 
 
     }
+    @GetMapping("/product/{id}")
+    public ResponseEntity<?> getProduct(@PathVariable("id")Integer id){
+
+        Product product = productService.getProductById(id);
+        return new ResponseEntity<Product>(product, HttpStatus.OK);
+    }
+
 
 
 }
