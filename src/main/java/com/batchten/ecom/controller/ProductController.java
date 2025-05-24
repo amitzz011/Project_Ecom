@@ -30,7 +30,6 @@ public class ProductController {
     public ResponseEntity<Product> createProduct( @RequestBody Product product){
         Product savedProduct = productRepository.save(product);
 
-        // Return HTTP 201 Created with the URI of the created resource
         URI location = URI.create("/api/product/" + savedProduct.getId());
         return ResponseEntity.created(location).body(savedProduct);
 
