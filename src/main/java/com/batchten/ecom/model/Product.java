@@ -19,7 +19,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Integer id;
 
     @Column(name = "name")
     private String name;
@@ -44,5 +44,15 @@ public class Product {
 
     @Column(name = "quantity")
     private int quantity;
+
+    @Column(name = "image_name")
+    private String imageName;
+
+    @Column(name = "image_type")
+    private String imageType;
+
+    @Column(name = "image_data")
+    @Lob
+    private byte[] imageData;
 
 }
