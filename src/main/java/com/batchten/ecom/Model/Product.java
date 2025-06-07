@@ -1,4 +1,4 @@
-package com.batchten.ecom.model;
+package com.batchten.ecom.Model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

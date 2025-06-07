@@ -1,4 +1,4 @@
-package com.batchten.ecom.dto;
+package com.batchten.ecom.Dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
